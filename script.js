@@ -1,5 +1,8 @@
 // console.log(dayjs().format('MMM DD, YYYY [at] hh:mm:ss a'));
 
+var timeDisplay = $("#currentDay");
+timeDisplay.text(dayjs().format('MMM DD, YYYY'))
+
 var saveButtons = $(".saveBtn");
 console.log(saveButtons);
 
@@ -16,10 +19,12 @@ $(document).ready(function () {
     } else{
       $(this).addClass('future')
     }
+    
+    $(this).children(".description").val(localStorage.getItem($(this).attr("data-time")))  
+    
   })
  
 });
-
 
 // Set save buttons
 saveButtons.on('click', function(){
@@ -28,9 +33,6 @@ saveButtons.on('click', function(){
   var textValue = $(this).siblings(".description").val()
   console.log(textValue);
 
-  // store to localstorage
+  localStorage.setItem(timeValue, textValue);
 
 });
-
-// create for loop to assign event listener for each button -- can either use object or different storage for each
-// letterBtn.addClass('letter-button btn btn-info'); -- from 05.9
