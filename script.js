@@ -1,16 +1,12 @@
-// console.log(dayjs().format('MMM DD, YYYY [at] hh:mm:ss a'));
-
 var timeDisplay = $("#currentDay");
 timeDisplay.text(dayjs().format('MMM DD, YYYY'))
 
 var saveButtons = $(".saveBtn");
-console.log(saveButtons);
 
 // Set colors of hour blocks by time
 $(document).ready(function () {
 
   $('.time-block').each(function(){
-    console.log($(this).attr("data-time"))
     if ($(this).attr("data-time") < dayjs().hour()){
       $(this).addClass('past')
     }
