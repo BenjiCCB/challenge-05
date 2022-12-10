@@ -1,9 +1,27 @@
-var startButton = document.querySelector(".saveBtn");
+var saveButtons = $(".saveBtn");
+console.log(saveButtons);
+
+
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+$(document).ready(function () {
+
+  console.log("document loaded");
+  console.log(dayjs().format('MMM DD, YYYY [at] hh:mm:ss a'));
+  console.log(dayjs().hour());
+
+  var timeSlots = $(".time-block")
+  console.log(timeSlots[0].attr("data-time"))
+
+
+  
+  // for (var i = 0; i < timeSlots.length; i++) { 
+  //   console.log(timeSlots[i].attr("data-time"))
+  // }
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -24,4 +42,23 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-saveButton.addEventListener("click", startQuiz);
+// use jquery to grab all timeblack elements -- function updater based on past/present/future
+// loop over timeblocks. check for 1) current time block is less than hour, or present or future
+
+// function saveEntry(event){
+//   event.target
+//   console.log("button clicked", event)
+// }
+
+// saveButtons.on('click', saveEntry);
+saveButtons.on('click', function(){
+  var timeValue = $(this).parent().attr("data-time")
+  console.log(timeValue)
+  var textValue = $(this).siblings(".description").val()
+  console.log(textValue);
+
+  // store to localstorage
+
+});
+
+// create for loop to assign event listener for each button -- can either use object or different storage for each
